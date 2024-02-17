@@ -33,10 +33,12 @@ if test -e $ITERM_INTEGRATION_FILE
 end
 
 # Starship prompt integration.
-starship init fish | source
+if test starship
+   starship init fish | source
+end
 
+# To set shell greeting message.
 set -U fish_greeting
-
 echo (set_color cyan) '
 Welcome Mustansir! What will it be today?
 ' (set_color normal)

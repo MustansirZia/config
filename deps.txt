@@ -1,0 +1,5 @@
+fish
+omf
+starship
+chezmoi
+micro
