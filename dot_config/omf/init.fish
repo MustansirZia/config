@@ -1,4 +1,4 @@
-# Set environment variables.
+# 1) Set environment variables.
 set -gx WORKSPACE_PATH $HOME/Workspace 
 set -gx FLUTTER_ROOT $WORKSPACE_PATH/bin/flutter
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
@@ -15,29 +15,29 @@ set -gx PATH $PATH:/opt/homebrew/Cellar/postgresql@11/11.20_1/bin
 set -gx PATH $PATH:/opt/homebrew/opt/python@3.11/libexec/bin
 set -gx PATH $PATH:/usr/local/Cellar/ruby/2.7.0/bin/
 
-# Set all aliase
-# git aliases
+# 2) Set aliases.
+# git aliases.
 alias gp="git push" 
 alias gl="git pull"
 alias gc="git add . && git commit -m" 
 alias gs="git stash"
-# rosetta aliases
-alias x86='arch -x86_64'
+# rosetta aliases.
+alias x86='arch -86_64'
 # misc aliases
 alias postgre='postgres -D ~/Workspace/bin/postgres/data'
 
-# iTerm integration
+# 3) iTerm integration.
 set ITERM_INTEGRATION_FILE ~/.iterm2_shell_integration.fish 
 if test -e $ITERM_INTEGRATION_FILE
    source $ITERM_INTEGRATION_FILE 
 end
 
-# Starship prompt integration.
+# 4) Starship prompt integration.
 if test starship
    starship init fish | source
 end
 
-# To set shell greeting message.
+# Set my shell greeting message.
 set -U fish_greeting
 echo (set_color cyan) '
 Welcome Mustansir! What will it be today?
