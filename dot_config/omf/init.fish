@@ -6,14 +6,14 @@ set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
 set -gx N_PREFIX $HOME/.n
 
-set -gx PATH $PATH:$N_PREFIX/bin:
-set -gx PATH $PATH:$WORKSPACE_PATH/bin
-set -gx PATH $PATH:$ANDROID_HOME/platform-tools
-set -gx PATH $PATH:$ANDROID_HOME/build-tools/28.0.3
-set -gx PATH $PATH:$ANDROID_HOME/tools
-set -gx PATH $PATH:/opt/homebrew/Cellar/postgresql@11/11.20_1/bin
-set -gx PATH $PATH:/opt/homebrew/opt/python@3.11/libexec/bin
-set -gx PATH $PATH:/usr/local/Cellar/ruby/2.7.0/bin/
+fish_add_path $N_PREFIX/bin:
+fish_add_path $WORKSPACE_PATH/bin
+fish_add_path $ANDROID_HOME/platform-tools
+fish_add_path $ANDROID_HOME/build-tools/28.0.3
+fish_add_path $ANDROID_HOME/tools
+fish_add_path /opt/homebrew/Cellar/postgresql@11/11.20_1/bin
+fish_add_path /opt/homebrew/opt/python@3.11/libexec/bin
+fish_add_path /usr/local/Cellar/ruby/2.7.0/bin/
 
 # 2) Set aliases.
 # git aliases.
@@ -33,7 +33,7 @@ if test -e $ITERM_INTEGRATION_FILE
 end
 
 # 4) Starship prompt integration.
-if test starship
+if test (starship)
    starship init fish | source
 end
 
