@@ -33,7 +33,7 @@ if test -e $ITERM_INTEGRATION_FILE
 end
 
 # 4) Starship prompt integration.
-if test (starship)
+if test -n (which starship)
    starship init fish | source
 end
 
