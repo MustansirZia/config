@@ -7,14 +7,14 @@ set -gx LANG en_US.UTF-8
 set -gx N_PREFIX $HOME/.n
 set -gx HOMEBREW_PATH /opt/homebrew
 
-fish_add_path $N_PREFIX/bin:
+fish_add_path $N_PREFIX/bin
 fish_add_path $WORKSPACE_PATH/bin
 fish_add_path $ANDROID_HOME/platform-tools
 fish_add_path $ANDROID_HOME/build-tools/28.0.3
 fish_add_path $ANDROID_HOME/tools
 fish_add_path $HOMEBREW_PATH/bin/
 fish_add_path $HOMEBREW_PATH/Cellar/postgresql@11/11.20_1/bin
-fish_add_path $HOMEBREW_PATH/opt/python@3.11/libexec/bin
+fish_add_path $HOMEBREW_PATH/Cellar/python@3.10/3.10.14/libexec/bin
 fish_add_path /usr/local/Cellar/ruby/2.7.0/bin/
 
 # 2) Set aliases.
@@ -38,6 +38,18 @@ end
 if test -n (which starship)
    starship init fish | source
 end
+
+# 5) SDKMAN integration.
+set -gx SDKMAN_DIR ~/.sdkman
+if test -e $SDKMAN_DIR
+  function sdk
+    bash -c "source '$HOME/.sdkman/bin/sdkman-init.sh'; sdk $argv[1..]"
+  end
+  fish_add_path (find "$SDKMAN_DIR/candidates/maven/current/bin" -maxdepth 0)
+  # fish_add_path (find "$SDKMAN_DIR/candidates/kotlin/current/bin" -maxdepth 0)
+  fish_add_path (find "$SDKMAN_DIR/candidates/java/current/bin" -maxdepth 0)
+  # fish_add_path (find "$SDKMAN_DIR/candidates/gradle/current/bin" -maxdepth 0)
+end 
 
 # Set my shell greeting message.
 set -U fish_greeting
