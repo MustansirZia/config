@@ -27,6 +27,8 @@ alias gs="git stash"
 alias x86='arch -x86_64'
 # misc aliases
 alias postgre='postgres -D ~/Workspace/bin/postgres/data'
+# aws vault aliases
+alias qa="aws-vault exec qa --"
 
 # 3) iTerm integration.
 set ITERM_INTEGRATION_FILE ~/.iterm2_shell_integration.fish 
