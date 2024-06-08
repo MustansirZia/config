@@ -19,24 +19,24 @@ fish_add_path /usr/local/Cellar/ruby/2.7.0/bin/
 
 # 2) Set aliases.
 # git aliases.
-alias gp="git push" 
-alias gl="git pull"
-alias gc="git add . && git commit -m" 
-alias gs="git stash"
-alias gk="git checkout"
+alias gp='git push' 
+alias gl='git pull'
+alias gc='git add . && git commit -m' 
+alias gs='git stash'
+alias gk='git checkout'
 # rosetta aliases.
-alias x86="arch -x86_64"
+alias x86='arch -x86_64'
 # misc aliases
-alias postgre="postgres -D ~/Workspace/bin/postgres/data"
+alias postgre='postgres -D ~/Workspace/bin/postgres/data'
 # aws vault aliases
-alias qa="aws-vault exec qa --"
+alias qa='aws-vault exec qa --'
 # Turbokat aliases
 function enter
   code $WORKSPACE_PATH/ClearGlass/$argv
 end
-alias base="docker exec -u root -it  $(docker ps -f name=base  --format "{{.ID}}") php artisan --"
-alias tlog="turbokat log"
-alias release="release.sh"
+alias base='docker exec -u root -it  $(docker ps -f name=base  --format "{{.ID}}") php artisan --'
+alias tlog='turbokat log'
+alias release='release.sh'
 
 # 3) iTerm integration.
 set ITERM_INTEGRATION_FILE ~/.iterm2_shell_integration.fish 
