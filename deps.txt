@@ -1,6 +1,9 @@
 alacritty
+zellij
 fish
 omf
 starship
 chezmoi
 micro
+lazydocker
+SauceCode Pro Nerd Font Regular
