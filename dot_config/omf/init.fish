@@ -6,6 +6,7 @@ set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
 set -gx N_PREFIX $HOME/.n
 set -gx HOMEBREW_PATH /opt/homebrew
+set -gx ZELLIJ_AUTO_EXIT true
 
 fish_add_path $N_PREFIX/bin
 fish_add_path $WORKSPACE_PATH/bin
@@ -38,32 +39,45 @@ alias base='docker exec -u root -it  $(docker ps -f name=base  --format "{{.ID}}
 alias tlog='turbokat log'
 alias release='release.sh'
 
-# 3) iTerm integration.
-set ITERM_INTEGRATION_FILE ~/.iterm2_shell_integration.fish 
-if test -e $ITERM_INTEGRATION_FILE
-   source $ITERM_INTEGRATION_FILE 
-end
-
-# 4) Starship prompt integration.
+# 3) Starship prompt integration.
 if test -n (which starship)
    starship init fish | source
 end
 
-# 5) SDKMAN integration.
+# 4) SDKMAN integration.
 set -gx SDKMAN_DIR ~/.sdkman
 if test -e $SDKMAN_DIR
-  function sdk
-    bash -c "source '$HOME/.sdkman/bin/sdkman-init.sh'; sdk $argv[1..]"
-  end
-  fish_add_path (find "$SDKMAN_DIR/candidates/maven/current/bin" -maxdepth 0)
-  # fish_add_path (find "$SDKMAN_DIR/candidates/kotlin/current/bin" -maxdepth 0)
-  fish_add_path (find "$SDKMAN_DIR/candidates/java/current/bin" -maxdepth 0)
-  # fish_add_path (find "$SDKMAN_DIR/candidates/gradle/current/bin" -maxdepth 0)
+    function sdk
+        bash -c "source '$HOME/.sdkman/bin/sdkman-init.sh'; sdk $argv[1..]"
+    end
+    fish_add_path (find "$SDKMAN_DIR/candidates/maven/current/bin" -maxdepth 0)
+    # fish_add_path (find "$SDKMAN_DIR/candidates/kotlin/current/bin" -maxdepth 0)
+    fish_add_path (find "$SDKMAN_DIR/candidates/java/current/bin" -maxdepth 0)
+    # fish_add_path (find "$SDKMAN_DIR/candidates/gradle/current/bin" -maxdepth 0)
 end 
 
-# Set my shell greeting message.
+function start_zellij
+    set ZJ_SESSIONS (zellij list-sessions)
+    set NO_SESSIONS (echo "$ZJ_SESSIONS" | wc -l)
+    if [ "$NO_SESSIONS" -ge 2 ]; then
+        zellij attach \
+        "(echo "$ZJ_SESSIONS" | sk)"
+    else
+    zellij attach -c
+    end
+end
+
+# 5) Test if zellij is available.
+if test -n (which zellij)
+    # Start zellij if not started already.
+    if set -q ZELLIJ
+    else
+        start_zellij
+    end
+end
+
+# 6) Set my shell greeting message.
 set -U fish_greeting
 echo (set_color cyan) '
 Welcome Mustansir! What will it be today?
 ' (set_color normal)
-
