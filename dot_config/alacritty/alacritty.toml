@@ -1,0 +1,16 @@
+import = [
+    "~/.config/alacritty/themes/tokyo-night.toml"
+]
+
+[window]
+padding.x = 12
+padding.y = 6
+
+[font]
+size = 14
+normal.family = "SauceCodePro Nerd Font"
+normal.style  = "Regular"
+bold.style = "Regular"
+offset.x = 0 
+offset.y = 4
+
