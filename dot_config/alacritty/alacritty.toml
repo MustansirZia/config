@@ -5,6 +5,8 @@ import = [
 [window]
 padding.x = 12
 padding.y = 6
+dimensions.columns = 150
+dimensions.lines = 40
 
 [font]
 size = 14
