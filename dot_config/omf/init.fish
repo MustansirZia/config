@@ -28,16 +28,24 @@ alias gk='git checkout'
 # rosetta aliases.
 alias x86='arch -x86_64'
 # misc aliases
-alias postgre='postgres -D ~/Workspace/bin/postgres/data'
-# aws vault aliases
-alias qa='aws-vault exec qa --'
+alias postgre="postgres -D ~/Workspace/bin/postgres/data"
 # Turbokat aliases
 function enter
-  code $WORKSPACE_PATH/ClearGlass/$argv
+  cursor $WORKSPACE_PATH/ClearGlass/$argv
 end
 alias base='docker exec -u root -it  $(docker ps -f name=base  --format "{{.ID}}") php artisan --'
 alias tlog='turbokat log'
-alias release='release.sh'
+function trs
+  docker restart  $(docker ps -f name=$argv --format "{{.ID}}")
+end
+# release aliases
+alias release="release.sh"
+# aws aliases
+alias sshcg="sshcg.sh"
+alias lgn="aws-vault login"
+alias qa="aws-vault exec qa --"
+alias tst="aws-vault exec test --"
+alias dev="aws-vault exec dev --" 
 
 # 3) Starship prompt integration.
 if test -n (which starship)
