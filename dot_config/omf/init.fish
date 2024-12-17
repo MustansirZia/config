@@ -38,6 +38,9 @@ alias tlog='turbokat log'
 function trs
   docker restart  $(docker ps -f name=$argv --format "{{.ID}}")
 end
+function texec 
+  docker exec -u root -it $(docker ps -f name=$argv --format "{{.ID}}") sh
+end
 # release aliases
 alias release="release.sh"
 # aws aliases
@@ -71,20 +74,26 @@ function start_zellij
         zellij attach \
         "(echo "$ZJ_SESSIONS" | sk)"
     else
-    zellij attach -c
+        zellij attach -c
     end
 end
 
 # 5) Test if zellij is available.
-if test -n (which zellij)
+if test (which zellij)
     # Start zellij if not started already.
     if set -q ZELLIJ
     else
+        echo "starting"
         start_zellij
     end
 end
 
-# 6) Set my shell greeting message.
+# 6) Hook direnv if available.
+if test (which direnv)
+    direnv hook fish | source
+end 
+
+# 7) Set my shell greeting message.
 set -U fish_greeting
 echo (set_color cyan) '
 Welcome Mustansir! What will it be today?
