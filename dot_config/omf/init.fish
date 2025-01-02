@@ -31,7 +31,7 @@ alias x86='arch -x86_64'
 alias postgre="postgres -D ~/Workspace/bin/postgres/data"
 # Turbokat aliases
 function enter
-  cursor $WORKSPACE_PATH/ClearGlass/$argv
+  code $WORKSPACE_PATH/ClearGlass/$argv
 end
 alias base='docker exec -u root -it  $(docker ps -f name=base  --format "{{.ID}}") php artisan --'
 alias tlog='turbokat log'
