@@ -1,4 +1,4 @@
-import = [
+general.import = [
     "~/.config/alacritty/themes/tokyo-night.toml"
 ]
 
@@ -16,3 +16,5 @@ bold.style = "Regular"
 offset.x = 0 
 offset.y = 4
 
+[terminal]
+shell = "/usr/local/bin/fish"
