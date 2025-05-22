@@ -17,6 +17,7 @@ fish_add_path $HOMEBREW_PATH/bin/
 fish_add_path $HOMEBREW_PATH/Cellar/postgresql@11/11.20_1/bin
 fish_add_path $HOMEBREW_PATH/Cellar/python@3.12/3.12.2_1/libexec/bin
 fish_add_path /usr/local/Cellar/ruby/2.7.0/bin/
+fish_add_path /usr/local/bin
 
 # 2) Set aliases.
 # git aliases.
