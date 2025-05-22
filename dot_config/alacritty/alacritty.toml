@@ -18,3 +18,8 @@ offset.y = 4
 
 [terminal]
 shell = "/usr/local/bin/fish"
+
+[keyboard]
+bindings = [
+    { key = "P", mods = "Command", action = "CreateNewWindow" }
+]
