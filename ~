@@ -63,8 +63,7 @@ if test -e $SDKMAN_DIR
     function sdk
         bash -c "source '$HOME/.sdkman/bin/sdkman-init.sh'; sdk $argv[1..]"
     end
-    fish_add_path (find "$SDKMAN_DIR/candida
-es/maven/current/bin" -maxdepth 0)
+    fish_add_path (find "$SDKMAN_DIR/candidates/maven/current/bin" -maxdepth 0)
     # fish_add_path (find "$SDKMAN_DIR/candidates/kotlin/current/bin" -maxdepth 0)
     fish_add_path (find "$SDKMAN_DIR/candidates/java/current/bin" -maxdepth 0)
     # fish_add_path (find "$SDKMAN_DIR/candidates/gradle/current/bin" -maxdepth 0)
